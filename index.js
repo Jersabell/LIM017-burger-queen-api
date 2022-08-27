@@ -5,6 +5,8 @@ const authMiddleware = require('./middleware/auth');
 const errorHandler = require('./middleware/error');
 const routes = require('./routes');
 const pkg = require('./package.json');
+// util para poder usar promesas con mysql:
+const { promisify } = require('util'); 
 
 const { port, dbUrl, secret } = config;
 const app = express();

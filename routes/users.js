@@ -9,6 +9,7 @@ const {
   getUsers,
 } = require('../controller/users');
 
+// Usuario Admin
 const initAdminUser = (app, next) => {
   const { adminEmail, adminPassword } = app.get('config');
   if (!adminEmail || !adminPassword) {
@@ -21,6 +22,7 @@ const initAdminUser = (app, next) => {
     roles: { admin: true },
   };
 
+  // falta una funcion que se va ejecutar aquí 
   // TODO: crear usuaria admin
   next();
 };

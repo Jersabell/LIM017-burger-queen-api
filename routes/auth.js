@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const connection = require('../index');
 const config = require('../config');
 
 const { secret } = config;
@@ -17,12 +18,19 @@ module.exports = (app, nextMain) => {
    * @code {400} si no se proveen `email` o `password` o ninguno de los dos
    * @auth No requiere autenticación
    */
-  app.post('/auth', (req, resp, next) => {
+  app.post('/auth', async (req, resp, next) => {
     const { email, password } = req.body;
+    // codigo 15/06
+    const newlink = {
+      username: 'user1',
+    }
+    await connection.query('INSERT INTO user set?', [newlink])
+    // 
 
     if (!email || !password) {
       return next(400);
     }
+
 
     // TODO: autenticar a la usuarix
     next();
